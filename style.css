@@ -1,0 +1,23 @@
+:root {
+--text: #181612;
+--background: #f7f5f4;
+--primary: #a9937f;
+--secondary: #75aca7;
+--accent: #7f90c9;
+}
+body {
+    color: var(--text);
+    background: var(--background);
+}
+audio {
+    background: var(--secondary);
+}
+h1 {
+    background: var(--accent);
+}
+h2 {
+    background: var(--secondary)
+}
+li::marker{
+    color:rgb(193, 146, 230)
+}
