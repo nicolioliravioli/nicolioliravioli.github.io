@@ -8,15 +8,18 @@
 body {
     color: var(--text);
     background: var(--background);
+    font-family: "Playpen Sans Hebrew";
 }
 audio {
     background: var(--secondary);
 }
 h1 {
     background: var(--accent);
+    font-family: "Bagel Fat One";
 }
 h2 {
-    background: var(--secondary)
+    background: var(--secondary);
+    font-family: "Bagel Fat One";
 }
 li::marker{
     color:rgb(193, 146, 230)
