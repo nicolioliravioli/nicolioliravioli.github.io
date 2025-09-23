@@ -9,6 +9,9 @@ body {
     color: var(--text);
     background: var(--background);
     font-family: "Playpen Sans Hebrew";
+    font-size:.45cm;
+    font-weight:500;
+    font-style:normal;
 }
 audio {
     background: var(--secondary);
@@ -16,11 +19,21 @@ audio {
 h1 {
     background: var(--accent);
     font-family: "Bagel Fat One";
+    font-weight:lighter;
+    font-size:1.3cm;
 }
 h2 {
     background: var(--secondary);
     font-family: "Bagel Fat One";
+    font-weight:lighter;
+    font-size:.8cm;
 }
+h3 {
+    font-family: "Bagel Fat One";
+    font-weight:lighter;
+    font-size:.7cm;
+}
+
 li::marker{
-    color:rgb(193, 146, 230)
+    color:rgb(154, 111, 187)
 }
