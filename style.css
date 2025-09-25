@@ -22,17 +22,23 @@ h1 {
     font-weight:lighter;
     font-size:1.3cm;
     text-decoration: underline;
+    border: 2px solid rgb(43, 23, 97);
+    padding:.1em;
 }
 h2 {
     background: var(--secondary);
     font-family: "Bagel Fat One";
     font-weight:lighter;
     font-size:.8cm;
+    padding: .2em;
+    margin: 1em;
 }
 h3 {
     font-family: "Bagel Fat One";
     font-weight:lighter;
     font-size:.7cm;
+    border:1px solid black;
+    text-shadow: 2px 3px rgb(221, 165, 221);
 }
 em {
     text-decoration:underline;
@@ -44,4 +50,13 @@ li::marker{
     color:rgb(90, 74, 230);
     text-decoration:overline;
     font-family:"Bagel Fat One";
+    margin:2em;
+    text-shadow:1px 2px rgb(10, 238, 59);
+}
+img {
+    border:4px solid rgb(139, 133, 192);
+    width: 400px;
+    height:280px;
+    margin:1em;
+    box-shadow: 5px 5px rgb(51, 47, 68);
 }
