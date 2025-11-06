@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="balloon">🎈</p>
+
+<script>
+  let balloonEl = document.getElementById("balloon");
+  let fontsize = 10;
+  balloonEl.style.fontsize = fontsize + "px";
+  function handleKeyDown(event) { 
+    if (event.key == "ArrowUp") {
+      fontsize *= 1.1;
+      balloonEl.style.fontsize = fontsize + "px";
+      event.preventDefault();
+    }
+    if (event.key == "ArrowDown") {
+      fontsize /=1.1;
+      balloonEl.style.fontsize = fontsize + "px";
+      event.preventDefault();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+</script>
+<a href="index.html">home page</a>
+</body>
+</html>
