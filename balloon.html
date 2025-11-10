@@ -11,7 +11,7 @@
 <script>
   let balloonEl = document.getElementById("balloon");
   let fontsize = 10;
-  balloonEl.style.fontsize = fontsize + "px";
+  balloonEl.style.fontSize = fontsize + "px";
   function handleKeyDown(event) { 
     if (event.key == "ArrowUp") {
       fontsize *= 1.1;
@@ -20,7 +20,7 @@
     }
     if (event.key == "ArrowDown") {
       fontsize /=1.1;
-      balloonEl.style.fontsize = fontsize + "px";
+      balloonEl.style.fontSize = fontsize + "px";
       event.preventDefault();
       }
     }
