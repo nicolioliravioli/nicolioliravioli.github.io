@@ -84,17 +84,14 @@
         const btnGreet = document.getElementById("btnGreet");
         const greetingOutput = document.getElementById("greetingOutput");
 
-        tnGreet.addEventListener("click", () => {
+        btnGreet.addEventListener("click", () => {
             let name = nameImput.value;
             let age = ageImput.value;
-            greetingOutput.innerText = "Hello" + name + ", you are" + age + "years old!";
+            greetingOutput.textContent = "Hello" + name + ", you are" + age + "years old!";
             // TODO: Display a message like "Hello NAME, you are AGE years old!"
-         function handleKeyDown(event) { 
-            if (age == "ArrowUp") {
-         fontsize *= 1.1;
-         balloonEl.style.fontSize = fontsize + "px";
-          event.preventDefault();
-    }
+            if (age < 13) {
+                   greetingOutput.textContent = "You're just a kid!";
+            }
             // Challenge: If age < 13, show "You're just a kid!" instead.
         });
 
