@@ -103,8 +103,9 @@
       const colorInput = document.getElementById("colorInput");
       const volumeInput = document.getElementById("volumeInput");
       const colorOutput = document.getElementById("colorOutput");
-      colorOutput.textContent = "color:" + " " + colorInput.value + " " + "volume:" + " " + volumeInput.value;
+      colorOutput.textContent = "color:" + " " + colorOutput.value + " " + "volume:" + " " + volumeOutput.value;
       // TODO: Update the background color of colorOutput whenever the color input changes.
+      // or is it + "colorInput.value"
       // 1. add event listener for "input" event on colorInput.
       // 2. inside the event handler, set colorOutput.style.backgroundColor to the selected color (colorInput.value)
       colorInput.addEventListener("input", () => {
