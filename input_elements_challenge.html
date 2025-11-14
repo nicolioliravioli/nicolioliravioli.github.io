@@ -72,10 +72,10 @@
         newsletter</label
       >
       <p>Pick a mode:</p>
-      <label><input type="radio" name="mode" value="Light" /> Light</label>
-      <label><input type="radio" name="mode" value="Dark" /> Dark</label>
+      <label><input type="radio" name="mode" id= "lightMode" value="Light" /> Light</label>
+      <label><input type="radio" name="mode" id="darkMode" value="Dark" /> Dark</label>
       <label
-        ><input type="radio" name="mode" value="System" checked /> System</label
+        ><input type="radio" name="mode" id= "systemMode" value="System" checked /> System</label
       >
       <button id="btnSubmit">Submit</button>
       <div class="output" id="modeOutput"></div>
@@ -103,13 +103,16 @@
       const colorInput = document.getElementById("colorInput");
       const volumeInput = document.getElementById("volumeInput");
       const colorOutput = document.getElementById("colorOutput");
-      colorOutput.textContent = "choose a good color." + " " + colorInput.value + " " + volumeInput.value;
+      colorOutput.textContent = "color:" + " " + colorInput.value + " " + "volume:" + " " + volumeInput.value;
       // TODO: Update the background color of colorOutput whenever the color input changes.
       // 1. add event listener for "input" event on colorInput.
       // 2. inside the event handler, set colorOutput.style.backgroundColor to the selected color (colorInput.value)
       colorInput.addEventListener("input", () => {
         colorOutput.style.backgroundColor = colorInput.value;
       });
+      volumeInput.addEventListener("input", () =>{
+        volumeOutput.style = volumeInput.value;
+      })
       // Challenge: Also display the hex code and volume value dynamically.
 
       // --- PART 3 ---
@@ -117,8 +120,25 @@
       const btnSubmit = document.getElementById("btnSubmit");
       const modeOutput = document.getElementById("modeOutput");
 
+      let lightMode = document.getElementById("lightMode");
+      let darkMode = document.getElementById("darkMode");
+      let systemMode = document.getElementById("systemMode")
+
       btnSubmit.addEventListener("click", () => {
         // TODO: Find which radio button is checked and display it.
+        // to check if value "boolean" is true. if (boolean) OR if (boolean == true) 
+        if (lightMode.checked) {
+          modeOutput.textConetent = lightMode;
+        }
+        if (darkMode.checked) {
+          modeOutput.textContent = darkMode;
+        }
+        if (systemMode.checked) {
+          modeOutput. systemMode = systemMode;
+        }
+        // if the light mode is checked, display light
+        // if the dark mode is checked, display dark
+        // if the system mode is checked, display system
         // Challenge: Include whether the user subscribed or not.
       });
     </script>
