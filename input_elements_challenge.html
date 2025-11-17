@@ -103,16 +103,16 @@
       const colorInput = document.getElementById("colorInput");
       const volumeInput = document.getElementById("volumeInput");
       const colorOutput = document.getElementById("colorOutput");
-      colorOutput.textContent = "color:" + " " + colorOutput.value + " " + "volume:" + " " + volumeOutput.value;
+      colorOutput.textContent = "color:" + " " + colorInput.value + " " + "volume:" + " " + volumeInput.value;
       // TODO: Update the background color of colorOutput whenever the color input changes.
       // or is it + "colorInput.value"
       // 1. add event listener for "input" event on colorInput.
       // 2. inside the event handler, set colorOutput.style.backgroundColor to the selected color (colorInput.value)
       colorInput.addEventListener("input", () => {
-        colorOutput.style.backgroundColor = colorInput.value;
+        colorInput.style.backgroundColor = colorInput.value;
       });
       volumeInput.addEventListener("input", () =>{
-        volumeOutput.style = volumeInput.value;
+        volumeInput.style = volumeInput.value;
       })
       // Challenge: Also display the hex code and volume value dynamically.
 
@@ -129,7 +129,7 @@
         // TODO: Find which radio button is checked and display it.
         // to check if value "boolean" is true. if (boolean) OR if (boolean == true) 
         if (lightMode.checked) {
-          modeOutput.textConetent = lightMode;
+          modeOutput.textContent = lightMode;
         }
         if (darkMode.checked) {
           modeOutput.textContent = darkMode;
