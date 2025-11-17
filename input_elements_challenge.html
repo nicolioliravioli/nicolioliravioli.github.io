@@ -109,10 +109,10 @@
       // 1. add event listener for "input" event on colorInput.
       // 2. inside the event handler, set colorOutput.style.backgroundColor to the selected color (colorInput.value)
       colorInput.addEventListener("input", () => {
-        colorInput.style.backgroundColor = colorInput.value;
+        colorOutput.style.backgroundColor = colorInput.value;
       });
-      volumeInput.addEventListener("input", () =>{
-        volumeInput.style = volumeInput.value;
+      volumeInput.addEventListener("input", () => {
+        volumeOutput.style = volumeInput.value;
       })
       // Challenge: Also display the hex code and volume value dynamically.
 
