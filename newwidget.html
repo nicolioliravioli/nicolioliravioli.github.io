@@ -13,8 +13,8 @@
     <section id="part1">
       <h2>Part 1: Text and Number Inputs</h2>
       <label>
-        Name:
-        <input id="nameInput" type="text" placeholder="Enter your name" />
+        Mile Time:
+        <input type="time" id="miletime" name="miletime" min="03:00" max="30:00" />
       </label>
       <label>
         Age:
@@ -23,8 +23,21 @@
       <button id="btnGreet">Greet Me</button>
       <div class="output" id="greetingOutput"></div>
     </section>
-    <sript>
-        
+    <script>
+        const mileInput = document.getElementById("mileInput");
+        const congratsOutput = document.getElementById("congratsOutput");
+
+        let mile = mileInput.value;
+        if (mile<4,30) {}
+        if (6<mile<7) {
+            congratsOutput.textContent = "the currennt 100 mile world record was set by Aleksandr Sorokin, running ~6:30 min/mile";
+        }
+        if (7<mile<8) {
+            congratsOutput.textContent = "the current 100 mile world record set by Caitriona Jennings, was run at ~7:30 min/mile ";
+        }
+        if (mile<15) { 
+            congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome"
+        }
     </script>
     <a href="index.html">home page</a>
 </body>
