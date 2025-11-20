@@ -23,21 +23,21 @@
         const congratsOutput = document.getElementById("congratsOutput");
         const btnCongrats = document.getElementById("btnCongrats");
 
-        btnCongrats.addEventListener("click", () => {
+      btnCongrats.addEventListener("click", () => {
         let mile = miletimeInput.value;
         if (4<miletime<5) {
-          congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
+        congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
         }
         if (6<miletime<7) {
-            congratsOutput.textContent = "the currennt 100 mile world record was set by Aleksandr Sorokin, running ~6:30 min/mile";
+          congratsOutput.textContent = "the currennt 100 mile world record was set by Aleksandr Sorokin, running ~6:30 min/mile";
         }
         if (7<miletime<8) {
-            congratsOutput.textContent = "the current 100 mile world record set by Caitriona Jennings, was run at ~7:30 min/mile ";
+          congratsOutput.textContent = "the current 100 mile world record set by Caitriona Jennings, was run at ~7:30 min/mile ";
         }
         if (miletime<15) { 
-            congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
+          congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
         }
-        })
+      })
     </script>
     <a href="index.html">home page</a>
 </body>
