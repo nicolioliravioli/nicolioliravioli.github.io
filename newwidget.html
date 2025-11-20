@@ -14,15 +14,20 @@
       <h2>Part 1: Text and Number Inputs</h2>
       <label>
         Mile Time:
-        <input type="time" id="miletime" name="miletime" min="03:00" max="30:00" />
+        <input type="number" id="miletime" name="miletime"  min="03:00" max="30:00"></input>
       </label>
+      <button id= "btnCongrats">tell me a cool fact about my mile time</button>
     </section>
     <script>
         const mileInput = document.getElementById("mileInput");
         const congratsOutput = document.getElementById("congratsOutput");
+        const btnCongrats = document.getElementById("btnCongrats");
 
+        btnCongrats.addEventListener("click", () => {
         let mile = mileInput.value;
-        if (mile<4,30) {}
+        if (4<mile<5) {
+          congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
+        }
         if (6<mile<7) {
             congratsOutput.textContent = "the currennt 100 mile world record was set by Aleksandr Sorokin, running ~6:30 min/mile";
         }
@@ -32,6 +37,7 @@
         if (mile<15) { 
             congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome"
         }
+      )}
     </script>
     <a href="index.html">home page</a>
 </body>
