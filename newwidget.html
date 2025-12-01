@@ -11,12 +11,23 @@
 </head>
 <body>
     <section id="part1">
-      <h2>Part 1: Text and Number Inputs</h2>
+      <h2>widget</h2>
       <label>
         Mile Time:
         <input type="number" id="miletime" name="miletime"  min=3 max=30></input>
       </label>
       <button id= "btnCongrats">tell me a cool fact about my mile time</button>
+      
+      <label>
+        <input type="checkbox" name="runtype" id="repetitiveterrain" checked />
+        <input type="checkbox" name="runtype" id="varyingterrain" checked />
+        <input type="checkbox" name="runtype" id="staying" checked />
+        <input type="checkbox" name="runtype" id="going" checked />
+        <input type="checkbox" name="runtype" id="speed" checked />
+        <input type="checkbox" name="runtype" id="elevation" checked />
+        <input type="checkbox" name="runtype" id="realfun" checked />
+        <input type="checkbox" name="runtype" id="masochist" checked />
+      </label>
     </section>
     <script>
       const miletimeInput = document.getElementById("mileInput");
@@ -38,6 +49,9 @@
           congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
         }
       })
+
+
+      const 
     </script>
     <a href="index.html">home page</a>
 </body>
