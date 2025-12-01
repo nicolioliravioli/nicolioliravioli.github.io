@@ -17,18 +17,37 @@
         <input type="number" id="miletime" name="miletime"  min=3 max=30></input>
       </label>
       <button id= "btnCongrats">tell me a cool fact about my mile time</button>
-      
+      <h3>which things do you like when running?</h3>
+      <p>select all that apply</p>
       <label>
         <input type="checkbox" name="runtype" id="repetitiveterrain" checked />
+        <p>repetitive terrain</p>
         <input type="checkbox" name="runtype" id="varyingterrain" checked />
+        <p>varying terrain</p>
         <input type="checkbox" name="runtype" id="staying" checked />
+        <p>staying somewhere, running in a circle, etc</p>
         <input type="checkbox" name="runtype" id="going" checked />
+        <p>going somewhere, ie going places maybe even point to point</p>
         <input type="checkbox" name="runtype" id="speed" checked />
+        <p>speed</p>
         <input type="checkbox" name="runtype" id="elevation" checked />
+        <p>elevation</p>
         <input type="checkbox" name="runtype" id="realfun" checked />
+        <p>easy fun</p>
         <input type="checkbox" name="runtype" id="masochist" checked />
+        <p>masochist fun</p>
       </label>
     </section>
+    <script>
+      const repetitiveterrain = document.getElementById("repetitiveterrain"); 
+      const varyingterrain = document.getElementById("varyingterrain");
+      const staying = document.getElementById("staying");
+      const going = document.getElementById("going");
+      const speed = document.getElementById("speed");
+      const elevation = document.getElementById("elevation");
+      const realfun = document.getElementById("realfun");
+      const masochist = document.getElementById("masochist");
+    </script>
     <script>
       const miletimeInput = document.getElementById("mileInput");
       const congratsOutput = document.getElementById("congratsOutput");
@@ -37,7 +56,7 @@
       btnCongrats.addEventListener("click", () => {
         let miletime = miletimeInput.value;
         if (4 < miletime < 5) {
-        congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
+          congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
         }
         if (6 < miletime < 7) {
           congratsOutput.textContent = "the currennt 100 mile world record was set by Aleksandr Sorokin, running ~6:30 min/mile";
@@ -49,10 +68,7 @@
           congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
         }
       })
-
-
-      const 
-    </script>
     <a href="index.html">home page</a>
+    </script>
 </body>
 </html>
