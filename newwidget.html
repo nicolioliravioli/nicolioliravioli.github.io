@@ -17,24 +17,25 @@
         <input type="number" id="miletime" name="miletime"  min=3 max=30></input>
       </label>
       <button id= "btnCongrats">tell me a cool fact about my mile time</button>
+      <div class="output" id="congratsOutput"></div>
       <h3>which things do you like when running?</h3>
       <p>select all that apply</p>
       <label>
-        <input type="checkbox" name="runtype" id="repetitiveterrain" checked />
+        <input type="checkbox" name="runtype" id="repetitiveterrain"/>
         <p>repetitive terrain</p>
-        <input type="checkbox" name="runtype" id="varyingterrain" checked />
+        <input type="checkbox" name="runtype" id="varyingterrain"/>
         <p>varying terrain</p>
-        <input type="checkbox" name="runtype" id="staying" checked />
+        <input type="checkbox" name="runtype" id="staying"/>
         <p>staying somewhere, running in a circle, etc</p>
-        <input type="checkbox" name="runtype" id="going" checked />
+        <input type="checkbox" name="runtype" id="going"/>
         <p>going somewhere, ie going places maybe even point to point</p>
-        <input type="checkbox" name="runtype" id="speed" checked />
+        <input type="checkbox" name="runtype" id="speed"/>
         <p>speed</p>
-        <input type="checkbox" name="runtype" id="elevation" checked />
+        <input type="checkbox" name="runtype" id="elevation"/>
         <p>elevation</p>
-        <input type="checkbox" name="runtype" id="realfun" checked />
+        <input type="checkbox" name="runtype" id="realfun"/>
         <p>easy fun</p>
-        <input type="checkbox" name="runtype" id="masochist" checked />
+        <input type="checkbox" name="runtype" id="masochist"/>
         <p>masochist fun</p>
       </label>
     </section>
@@ -49,7 +50,7 @@
       const masochist = document.getElementById("masochist");
     </script>
     <script>
-      const miletimeInput = document.getElementById("mileInput");
+      const miletimeInput = document.getElementById("miletimeInput");
       const congratsOutput = document.getElementById("congratsOutput");
       const btnCongrats = document.getElementById("btnCongrats");
 
