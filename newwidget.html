@@ -16,6 +16,13 @@
       p {
         padding: 2rem;
       }
+      h4 {
+        font-family: "Bagel Fat One";
+        font-weight:lighter;
+        font-size:.5cm;
+        border:1px solid rgb(100, 82, 165);
+        text-shadow: 2px 3px rgb(54, 87, 73);
+      }
     </style>
 </head>
 <body>
@@ -28,7 +35,7 @@
       <button id= "btnCongrats">tell me a cool fact about my mile time</button>
       <div class="output" id="congratsOutput"></div> 
       <h3>which things do you like when running?</h3>
-      <p>select all that apply</p>
+      <h4>select all that apply</h4>
       <label>
         <input type="checkbox" name="runtype" id="repetitiveterrain"/>
         <p>repetitive terrain</p>
@@ -48,7 +55,7 @@
         <p>masochist fun</p>
       </label>
     </section>
-    //M I L E  T I M E
+    
     <script>
       const miletimeInput = document.getElementById("miletimeInput");
       const congratsOutput = document.getElementById("congratsOutput");
@@ -70,7 +77,7 @@
         }
       })
     </script>
-    // C H E C K B O X E S
+  
     <script>
       const repetitiveterrain = document.getElementById("repetitiveterrain"); 
       const varyingterrain = document.getElementById("varyingterrain");
