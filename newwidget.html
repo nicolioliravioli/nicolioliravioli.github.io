@@ -53,6 +53,7 @@
         <p>easy fun</p>
         <input type="checkbox" name="runtype" id="masochist"/>
         <p>masochist fun</p>
+        <div class="output" id="informOutput"></div>
       </label>
     </section>
     
@@ -90,28 +91,28 @@
       //checkboxes
       let s = "stay on";
       if (repetitiveterrain.checked) {
-        congratsOutput.textContent = "generally for the clumsy or for speed";
+        informOutput.textContent = "generally for the clumsy or for speed";
       }
       if (varyingterrain.checked) {
-        congratsOutput.textContent = "generally more fun";
+        informsOutput.textContent = "generally more fun";
       }
       if (staying.checked) {
-        congratsOutput.textContent = s + " " + "treadmill or track";
+        informOutput.textContent = s + " " + "treadmill or track";
       }
       if (going.checked) {
-        congratsOutput.textContent = s + " " + "everything but treadmill and track";
+        informOutput.textContent = s + " " + "everything but treadmill and track";
       }
       if (speed.checked) {
-        congratsOutput.textContent = s + " " + "flatter terrain";
+        informOutput.textContent = s + " " + "flatter terrain";
       }
       if (elevation.checked) {
-        congratsOutput.textContent = s + " " + "mostly trails";
+        informOutput.textContent = s + " " + "mostly trails";
       }
       if (realfun.checked) {
-        congratsOutput.textContent = "run with friends or listen to music";
+        informOutput.textContent = "run with friends or listen to music";
       }
       if (masochist.checked) {
-        congratsOutput.textContent = "you probably like long distances, fast paces, and/or giant elevation gains";
+        informOutput.textContent = "you probably like long distances, fast paces, and/or giant elevation gains";
       }
       </script>
     <a href="index.html">home page</a>
