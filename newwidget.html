@@ -63,6 +63,9 @@
 
       btnCongrats.addEventListener("click", () => {
         let miletime = miletimeInput.value;
+        if (miletime < 15.1) { 
+          congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
+        }
         if (miletime > 3.9 && miletime < 5.1) {
           congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
         }
@@ -71,9 +74,6 @@
         }
         if (miletime > 6.9 && miletime < 8.1) {
           congratsOutput.textContent = "the current 100 mile world record set by Caitriona Jennings, was run at ~7:30 min/mile ";
-        }
-        if (miletime < 15.1) { 
-          congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
         }
       })
     </script>
