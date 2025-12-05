@@ -16,8 +16,8 @@
       p {
         margin: 0cm;
         padding: 0cm;
-        display: inline 
-        display: flex;
+        display: inline;
+        display: flexbox;
         flex-direction: column;
         margin-left:.5rem;
       }
@@ -48,20 +48,35 @@
       <label>
         <input type="checkbox" name="runtype" id="repetitiveterrain"/>
         <p>repetitive terrain</p>
+      </label>
+      <label>
         <input type="checkbox" name="runtype" id="varyingterrain"/>
         <p>varying terrain</p>
+      </label>
+      <label>
         <input type="checkbox" name="runtype" id="staying"/>
         <p>staying somewhere, running in a circle, etc</p>
+      </label>
+      <label>
         <input type="checkbox" name="runtype" id="going"/>
         <p>going somewhere, ie going places maybe even point to point</p>
+      <label>
         <input type="checkbox" name="runtype" id="speed"/>
         <p>speed</p>
+      </label>
+      <label>
         <input type="checkbox" name="runtype" id="elevation"/>
         <p>elevation</p>
+      </label>
+      <label>
         <input type="checkbox" name="runtype" id="realfun"/>
         <p>easy fun</p>
+      </label>
+      <label>
         <input type="checkbox" name="runtype" id="masochist"/>
         <p>masochist fun</p>
+      </label>
+      <label>
         <div class="output" id="informOutput"></div>
         <button id="btnSubmit">tell me something about my preferences</button>
       </label>
@@ -75,10 +90,7 @@
       btnCongrats.addEventListener("click", () => {
         let miletime = parseFloat(miletimeInput.value);
         congratsOutput.textContent="";
-        if (miletime < 15.1) { 
-          congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
-        }
-        else if (miletime > 3.9 && miletime < 5.1) {
+        if (miletime > 3.9 && miletime < 5.1) {
           congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
         }
         else if (miletime > 5.9 && miletime < 7.1) {
@@ -86,6 +98,9 @@
         }
         else if (miletime > 6.9 && miletime < 8.1) {
           congratsOutput.textContent = "the current 100 mile world record set by Caitriona Jennings, was run at ~7:30 min/mile ";
+        }
+        else if (miletime < 15.1) { 
+          congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
         }
       })
     </script>
@@ -103,7 +118,7 @@
       const informOutput = document.getElementById("informOutput");
       //checkboxes
       let s = "stay on";
-      btnSubmit.addEventListener("click," () => {
+      btnSubmit.addEventListener("click" () => {
         informOutput.textContent ="";
         if (repetitiveterrain.checked) {
         informOutput.textContent += "generally for the clumsy or for speed";
