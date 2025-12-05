@@ -14,15 +14,21 @@
         font-weight: bold;
       }
       p {
-        margin: 3cm;
+        margin: 0cm;
         padding: 0cm;
+        display: inline;
+        margin-left: .5rem;
       }
       h4 {
         font-family: "Bagel Fat One";
         font-weight:lighter;
         font-size:.5cm;
-        color:1px rgb(109, 96, 155);
+        color:rgb(109, 96, 155);
         text-shadow: 2px 4px #e7e09e;
+      }
+      label {
+        display: block;
+        margin-bottom: .5rem;
       }
     </style>
 </head>
@@ -65,17 +71,18 @@
       const btnCongrats = document.getElementById("btnCongrats");
 
       btnCongrats.addEventListener("click", () => {
-        let miletime = miletimeInput.value;
+        let miletime = parseFloat(miletimeInput.value);
+        congratsOutput.textContent="";
         if (miletime < 15.1) { 
           congratsOutput.textContent = "no matter what your mile time is, running a mile is awsome";
         }
-        if (miletime > 3.9 && miletime < 5.1) {
+        else if (miletime > 3.9 && miletime < 5.1) {
           congratsOutput.textContent = "the current marathon world record, held by Kelvin Kiptom was run at ~4:35 min/mile";
         }
-        if (miletime > 5.9 && miletime < 7.1) {
+        else if (miletime > 5.9 && miletime < 7.1) {
           congratsOutput.textContent = "the currennt 100 mile world record was set by Aleksandr Sorokin, running ~6:30 min/mile";
         }
-        if (miletime > 6.9 && miletime < 8.1) {
+        else if (miletime > 6.9 && miletime < 8.1) {
           congratsOutput.textContent = "the current 100 mile world record set by Caitriona Jennings, was run at ~7:30 min/mile ";
         }
       })
@@ -91,33 +98,34 @@
       const realfun = document.getElementById("realfun");
       const masochist = document.getElementById("masochist");    
       const btnSubmit = document.getElementById("btnSubmit");
+      const informOutput = document.getElementById("informOutput");
       //checkboxes
-      let s = "stay on";
       btnSubmit.addEventListener("click," () => {
+        informOutput.textContent ="";
         let s = "stay on";
         if (repetitiveterrain.checked) {
-        informOutput.textContent = "generally for the clumsy or for speed";
+        informOutput.textContent += "generally for the clumsy or for speed";
         }
         if (varyingterrain.checked) {
-        informOutput.textContent = "generally more fun";
+        informOutput.textContent += "generally more fun";
         }
         if (staying.checked) {
-        informOutput.textContent = s + " " + "treadmill or track";
+        informOutput.textContent += s + " " + "treadmill or track";
         }
         if (going.checked) {
-        informOutput.textContent = s + " " + "everything but treadmill and track";
+        informOutput.textContent += s + " " + "everything but treadmill and track";
         }
         if (speed.checked) {
-        informOutput.textContent = s + " " + "flatter terrain";
+        informOutput.textContent += s + " " + "flatter terrain";
         }
         if (elevation.checked) {
-        informOutput.textContent = s + " " + "mostly trails";
+        informOutput.textContent += s + " " + "mostly trails";
         }
         if (realfun.checked) {
-        informOutput.textContent = "run with friends or listen to music";
+        informOutput.textContent += "run with friends or listen to music";
         }
         if (masochist.checked) {
-        informOutput.textContent = "you probably like long distances, fast paces, and/or giant elevation gains";
+        informOutput.textContent += "you probably like long distances, fast paces, and/or giant elevation gains";
         }
       })
       </script>
