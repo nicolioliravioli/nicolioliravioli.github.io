@@ -22,9 +22,12 @@ h1 {
     font-weight:lighter;
     font-size:1.3cm;
     text-decoration: underline;
-    border: 2px solid rgb(43, 23, 97);
+    border: 3px solid rgb(43, 23, 97);
     padding:.1em;
     text-shadow: 1px 3px rgb(201, 181, 255);
+    width:15em;
+    display:flex;
+    justify-content:center;
 }
 h2 {
     background: var(--secondary);
@@ -35,6 +38,9 @@ h2 {
     margin: 1em;
     color:black;
     text-shadow: 2px 3px rgb(108, 121, 197);
+    width:25em;
+    display:flex;
+    justify-content:center;
 }
 h3 {
     font-family: "Bagel Fat One";
@@ -42,6 +48,9 @@ h3 {
     font-size:.7cm;
     border:1px solid black;
     text-shadow: 2px 3px rgb(221, 165, 221);
+    width:20em;
+    display:flex;
+    justify-content:center;
 }
 em {
     text-decoration:underline;
