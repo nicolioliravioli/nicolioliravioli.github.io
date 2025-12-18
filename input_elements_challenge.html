@@ -103,7 +103,8 @@
       const colorInput = document.getElementById("colorInput");
       const volumeInput = document.getElementById("volumeInput");
       const colorOutput = document.getElementById("colorOutput");
-      colorOutput.textContent = "color:" + " " + colorInput.value + " " + "volume:" + " " + volumeInput.value;
+      colorOutput.textContent = "color or colour";
+      // colorOutput.textContent = "color:" + " " + colorInput.value + " " + "volume:" + " " + volumeInput.value;
       // TODO: Update the background color of colorOutput whenever the color input changes.
       // or is it + "colorInput.value"
       // 1. add event listener for "input" event on colorInput.
@@ -111,13 +112,14 @@
       colorInput.addEventListener("input", () => {
         colorOutput.style.backgroundColor = colorInput.value;
       });
-      volumeInput.addEventListener("input", () => {
+      /* volumeInput.addEventListener("input", () => {
         volumeInput.style = volumeInput.value;
       })
+      */
       // Challenge: Also display the hex code and volume value dynamically.
 
       // --- PART 3 ---
-      const subscribeBox = document.getElementById("subscribeBox");
+      /* const subscribeBox = document.getElementById("subscribeBox");
       const btnSubmit = document.getElementById("btnSubmit");
       const modeOutput = document.getElementById("modeOutput");
 
@@ -142,6 +144,7 @@
         // if the system mode is checked, display system
         // Challenge: Include whether the user subscribed or not.
       });
+      */
     </script>
     <a href="index.html">home page</a>
   </body>
