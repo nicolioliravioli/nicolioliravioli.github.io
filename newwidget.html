@@ -119,7 +119,7 @@
       const btnClear = document.getElementById("btnClear");
       const informOutput = document.getElementById("informOutput");
       //checkboxes
-      let s = "stay on";
+      /* let s = "stay on";
       btnSubmit.addEventListener("click", () => {
         informOutput.textContent ="";
         if (repetitiveterrain.checked) {
@@ -157,7 +157,37 @@
         realfun.checked = false;
         masochist.checked = false;
         informOutput.textContent = "";
-      });
+      }); */
+      btnSubmit.addEventListener("click", () => {
+      let messages = []; 
+      let s = "stay on";
+
+      if (repetitiveterrain.checked) messages.push("generally for the clumsy or for speed");
+      if (varyingterrain.checked) messages.push("generally more fun");
+      if (staying.checked) messages.push(s + " treadmill or track");
+      if (going.checked) messages.push(s + " everything but treadmill and track");
+      if (speed.checked) messages.push(s + " flatter terrain");
+      if (elevation.checked) messages.push(s + " mostly trails");
+      if (realfun.checked) messages.push("run with friends or listen to music");
+      if (masochist.checked) messages.push("you probably like long distances, fast paces, and/or giant elevation gains");
+
+      // NEW: Use Intl.ListFormat for a natural "A, B, and C" style
+      const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+      
+      // Check if there are any messages to avoid errors on empty lists
+      informOutput.textContent = messages.length > 0 ? formatter.format(messages) : "";
+      
+      btnClear.addEventListener("click", () => {
+        repetitiveterrain.checked = false;
+        varyingterrain.checked = false;
+        staying.checked = false;
+        going.checked = false;
+        speed.checked = false;
+        elevation.checked = false;
+        realfun.checked = false;
+        masochist.checked = false;
+        informOutput.textContent = "";
+});
       </script>
     <a href="index.html">home page</a>
 </body>
