@@ -172,7 +172,7 @@
       if (masochist.checked) messages.push("you probably like long distances, fast paces, and/or giant elevation gains");
 
       // NEW: Use Intl.ListFormat for a natural "A, B, and C" style
-      informOutput.textContent = messages.join(" ");
+      informOutput.textContent = messages.join(", ");
       
       btnClear.addEventListener("click", () => {
         repetitiveterrain.checked = false;
