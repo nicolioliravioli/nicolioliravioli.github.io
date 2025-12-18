@@ -79,6 +79,7 @@
       <label>
         <div class="output" id="informOutput"></div>
         <button id="btnSubmit">tell me something about my preferences</button>
+        <button id="btnClear">clear</button>
       </label>
     </section>
     
@@ -115,6 +116,7 @@
       const realfun = document.getElementById("realfun");
       const masochist = document.getElementById("masochist");    
       const btnSubmit = document.getElementById("btnSubmit");
+      const btnClear = document.getElementById("btnClear");
       const informOutput = document.getElementById("informOutput");
       //checkboxes
       let s = "stay on";
@@ -145,6 +147,17 @@
         informOutput.textContent += "you probably like long distances, fast paces, and/or giant elevation gains";
         }
       })
+       btnClear.addEventListener("click", () => {
+        repetitiveterrain.checked = false;
+        varyingterrain.checked = false;
+        staying.checked = false;
+        going.checked = false;
+        speed.checked = false;
+        elevation.checked = false;
+        realfun.checked = false;
+        masochist.checked = false;
+        informOutput.textContent = "";
+      });
       </script>
     <a href="index.html">home page</a>
 </body>
