@@ -312,7 +312,7 @@ document.addEventListener('keydown', function(e) {
     tetromino.row = row;
   }
 });
-
+document.getElementById('restartButton').addEventListener('click', restartGame);
 function restartGame() {
   cancelAnimationFrame(rAF);  // Cancel the current animation frame
   gameOver = false;            // Set the game over flag to false
@@ -331,7 +331,6 @@ function restartGame() {
   // Start the game loop again
   rAF = requestAnimationFrame(loop);
 }
-document.getElementById('restartButton').addEventListener('click', restartGame);
 // start the game
 rAF = requestAnimationFrame(loop);
 </script>
