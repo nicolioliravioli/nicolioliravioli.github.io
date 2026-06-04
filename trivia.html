@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Cool Fun Facts Trivia</title>
+    <style>
+        /* CSS Styling for a Clean, Fun Theme */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .game-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .btn {
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .option-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .option-btn:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .explanation {
+            background: rgba(46, 204, 113, 0.2);
+            border-left: 5px solid #2ecc71;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            text-align: left;
+        }
+
+        .shop-box {
+            background: rgba(155, 89, 182, 0.3);
+            border: 2px dashed #9b59b6;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .game-over-title {
+            color: #e74c3c;
+            font-size: 40px;
+            animation: shake 0.5s infinite;
+        }
+
+        .victory-title {
+            color: #2ecc71;
+            font-size: 40px;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(0px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(2px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(2px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1>Crazy Cool Fun Facts Trivia</h1>
+
+        <div id="start-screen">
+            <p>Welcome! Test your knowledge on weird and wonderful facts. Lose all your points, and it's game over. Survive 5 minutes or finish the deck to win!</p>
+            <button class="btn" id="start-btn">Press Start to Begin</button>
+        </div>
+
+        <div id="game-screen" class="hidden">
+            <div class="stats-bar">
+                <div>Overall Time Left: <span id="overall-timer">05:00</span></div>
+                <div>Question Timer: <span id="question-timer">15</span>s</div>
+                <div>Points: <span id="score-display">0</span></div>
+            </div>
+
+            <h3 id="question-text">Question template text?</h3>
+            <div class="options-container" id="options-box"></div>
+
+            <div id="shop-container" class="shop-box hidden">
+                <p>✨ <strong>Perk Milestone!</strong> You have 10 or more points. Spend points to buy an advantage:</p>
+                <button class="btn" id="buy-hint-btn" style="background-color: #9b59b6;">Buy Hint (-2 Points)</button>
+                <button class="btn" id="bonus-q-btn" style="background-color: #34495e;">Unlock Harder Bonus Category</button>
+            </div>
+
+            <div id="explanation-box" class="explanation hidden">
+                <strong id="result-status"></strong> <span id="explanation-text"></span>
+                <br><br>
+                <button class="btn" id="next-btn">Next Question</button>
+            </div>
+        </div>
+
+        <div id="end-screen" class="hidden">
+            <h2 id="end-title" class="game-over-title">GAME OVER</h2>
+            <p id="end-message"></p>
+            <button class="btn" id="restart-btn">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Trivia Question Dataset
+        const baseQuestions = [
+            {
+                question: "What war did the second Defenestration of Prague cause?",
+                options: ["The Thirty Years' War", "The Hundred Years' War", "The Napoleonic Wars", "The War of the Roses"],
+                answer: 0,
+                explanation: "Protestant nobles threw three Catholic officials out of a window. All of the officials survived, but this was the catalyst for the war. Fun fact: there have been 3 defenestrations of Prague!"
+            },
+            {
+                question: "What was the biggest snake ever recorded?",
+                options: ["Reticulated Python", "Titanoboa", "Green Anaconda", "King Cobra"],
+                answer: 1,
+                explanation: "Titanoboa lived roughly 58-60 million years ago and grew up to 42-50 feet long, weighing around 2,500 lbs."
+            },
+            {
+                question: "How many versions of the Black Death (plague) are there?",
+                options: ["1", "2", "3", "5"],
+                answer: 2,
+                explanation: "There are 3 types: bubonic plague, septicemic plague, and pneumonic plague."
+            },
+            {
+                question: "How many wives did King Henry VIII have?",
+                options: ["4", "5", "6", "8"],
+                answer: 2,
+                explanation: "Henry VIII had 6 wives: Catherine of Aragon, Anne Boleyn, Jane Seymour, Anne of Cleves, Kathryn Howard, and Katherine Parr."
+            },
+            {
+                question: "What was the infamous 'Cadaver Synod'?",
+                options: ["A vampire trial", "A medieval medical convention", "A Pope putting a dead rotting corpse on trial", "A witch hunt"],
+                answer: 2,
+                explanation: "In 897, Pope Stephen VI had the rotting corpse of his predecessor, Pope Formosus, exhumed, dressed in papal vestments, and put on trial."
+            },
+            {
+                question: "How did the Mona Lisa become so world-famous?",
+                options: ["It was painted using unique gold flakes", "It was stolen from the Louvre", "Leonardo da Vinci gave it to the King", "It was featured in a Shakespeare play"],
+                answer: 1,
+                explanation: "Its theft in 1911 by an Italian museum employee created a massive media sensation, catapulting it to global fame."
+            },
+            {
+                question: "What is the best-selling book of all time?",
+                options: ["The Bible", "Don Quixote", "Harry Potter and the Sorcerer's Stone", "A Tale of Two Cities"],
+                answer: 0,
+                explanation: "The Bible remains universally recognized as the best-selling book of all time, with billions of copies printed."
+            },
+            {
+                question: "Are horseshoe crabs actually true biological crabs?",
+                options: ["Yes", "No"],
+                answer: 1,
+                explanation: "No, horseshoe crabs are actually more closely related to spiders and scorpions than they are to crabs."
+            }
+        ];
+
+        const bonusQuestions = [
+            {
+                question: "🔥 BONUS HARD QUESTION: What is the math formula for calculating the total possible arrangements of a standard deck of 52 cards?",
+                options: ["52 x 52", "52²", "52! (52 Factorial)", "52^10"],
+                answer: 2,
+                explanation: "52! (52 factorial) generates an impossibly large number. Every time you shuffle a deck thoroughly, chances are that specific sequence of cards has never existed before in human history."
+            }
+        ];
+
+        // State Variables
+        let questions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questionTimeLeft = 15;
+        let overallTimeLeft = 300; // 5 minutes in seconds
+        let questionTimerInterval;
+        let overallTimerInterval;
+        let hasAnsweredCurrent = false;
+        let hintUsed = false;
+
+        // DOM Elements
+        const startScreen = document.getElementById('start-screen');
+        const gameScreen = document.getElementById('game-screen');
+        const endScreen = document.getElementById('end-screen');
+        
+        const startBtn = document.getElementById('start-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const buyHintBtn = document.getElementById('buy-hint-btn');
+        const bonusQBtn = document.getElementById('bonus-q-btn');
+
+        const questionText = document.getElementById('question-text');
+        const optionsBox = document.getElementById('options-box');
+        const scoreDisplay = document.getElementById('score-display');
+        const qTimerDisplay = document.getElementById('question-timer');
+        const oTimerDisplay = document.getElementById('overall-timer');
+        
+        const explanationBox = document.getElementById('explanation-box');
+        const explanationText = document.getElementById('explanation-text');
+        const resultStatus = document.getElementById('result-status');
+        const shopContainer = document.getElementById('shop-container');
+        const endTitle = document.getElementById('end-title');
+        const endMessage = document.getElementById('end-message');
+
+        // Event Listeners
+        startBtn.addEventListener('click', startGame);
+        nextBtn.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', startGame);
+        buyHintBtn.addEventListener('click', buyHint);
+        bonusQBtn.addEventListener('click', triggerBonusQuestion);
+
+        // Core Functions
+        function startGame() {
+            // Reset configurations
+            questions = [...baseQuestions];
+            currentQuestionIndex = 0;
+            score = 0;
+            overallTimeLeft = 300; 
+            scoreDisplay.textContent = score;
+            
+            startScreen.classList.add('hidden');
+            endScreen.classList.add('hidden');
+            gameScreen.classList.remove('hidden');
+
+            startOverallTimer();
+            loadQuestion();
+        }
+
+        function startOverallTimer() {
+            clearInterval(overallTimerInterval);
+            overallTimerInterval = setInterval(() => {
+                overallTimeLeft--;
+                
+                // Formatting time display
+                let minutes = Math.floor(overallTimeLeft / 60);
+                let seconds = overallTimeLeft % 60;
+                oTimerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (overallTimeLeft <= 0) {
+                    endGame(true, "Time Up! You survived the full 5 minutes!");
+                }
+            }, 1000);
+        }
+
+        function startQuestionTimer() {
+            questionTimeLeft = 15;
+            qTimerDisplay.textContent = questionTimeLeft;
+            
+            clearInterval(questionTimerInterval);
+            questionTimerInterval = setInterval(() => {
+                questionTimeLeft--;
+                qTimerDisplay.textContent = questionTimeLeft;
+
+                if (questionTimeLeft <= 0) {
+                    clearInterval(questionTimerInterval);
+                    handleAnswer(-1); // Timeout penalty
+                }
+            }, 1000);
+        }
+
+        function loadQuestion() {
+            hasAnsweredCurrent = false;
+            hintUsed = false;
+            explanationBox.classList.add('hidden');
+            
+            // Show Shop / Perk option if score is exactly or above 10
+            if (score >= 10) {
+                shopContainer.classList.remove('hidden');
+                buyHintBtn.disabled = false;
+            } else {
+                shopContainer.classList.add('hidden');
+            }
+
+            if (currentQuestionIndex >= questions.length) {
+                endGame(true, "You successfully answered all the standard questions!");
+                return;
+            }
+
+            let currentQ = questions[currentQuestionIndex];
+            questionText.textContent = currentQ.question;
+            optionsBox.innerHTML = '';
+
+            currentQ.options.forEach((option, index) => {
+                let button = document.createElement('button');
+                button.className = 'option-btn';
+                button.textContent = option;
+                button.addEventListener('click', () => handleAnswer(index));
+                optionsBox.appendChild(button);
+            });
+
+            startQuestionTimer();
+        }
+
+        function handleAnswer(selectedIndex) {
+            if (hasAnsweredCurrent) return;
+            hasAnsweredCurrent = true;
+            clearInterval(questionTimerInterval);
+            shopContainer.classList.add('hidden'); // Lock perks after answering
+
+            let currentQ = questions[currentQuestionIndex];
+            let isCorrect = (selectedIndex === currentQ.answer);
+
+            // Turn off functionality of option buttons
+            Array.from(optionsBox.children).forEach((btn) => btn.disabled = true);
+
+            if (isCorrect) {
+                score += 5;
+                resultStatus.textContent = "🎉 Correct! (+5 pts)";
+                resultStatus.style.color = "#2ecc71";
+            } else {
+                score -= 3;
+                resultStatus.textContent = selectedIndex === -1 ? "⏱️ Out of Time! (-3 pts)" : "❌ Incorrect! (-3 pts)";
+                resultStatus.style.color = "#e74c3c";
+            }
+
+            scoreDisplay.textContent = score;
+            explanationText.textContent = currentQ.explanation;
+            explanationBox.classList.remove('hidden');
+
+            // Instantly check Game Over states condition
+            if (score <= 0 && currentQuestionIndex >= 0) {
+                endGame(false, "Your points fell to 0 or below!");
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            loadQuestion();
+        }
+
+        function buyHint() {
+            if (score >= 10 && !hintUsed && !hasAnsweredCurrent) {
+                score -= 2;
+                scoreDisplay.textContent = score;
+                hintUsed = true;
+                buyHintBtn.disabled = true;
+
+                // Eliminate one wrong option visually
+                let currentQ = questions[currentQuestionIndex];
+                let optionsButtons = Array.from(optionsBox.children);
+                
+                for (let i = 0; i < optionsButtons.length; i++) {
+                    if (i !== currentQ.answer) {
+                        optionsButtons[i].style.textDecoration = "line-through";
+                        optionsButtons[i].style.opacity = "0.5";
+                        optionsButtons[i].disabled = true;
+                        break; // Remove just one option
+                    }
+                }
+            }
+        }
+
+        function triggerBonusQuestion() {
+            if (score >= 10 && !hasAnsweredCurrent) {
+                // Injects a hard bonus question seamlessly next in queue
+                questions.splice(currentQuestionIndex + 1, 0, bonusQuestions[0]);
+                alert("An increased difficulty Bonus Question has been inserted next into your category tracker!");
+                bonusQBtn.disabled = true;
+            }
+        }
+
+        function endGame(isWin, frameworkMessage) {
+            clearInterval(questionTimerInterval);
+            clearInterval(overallTimerInterval);
+            gameScreen.classList.add('hidden');
+            endScreen.classList.remove('hidden');
+
+            if (isWin) {
+                endTitle.textContent = "👑 CROWNED WINNER!";
+                endTitle.className = "victory-title";
+                endMessage.textContent = `${frameworkMessage} Finished with a grand total of: ${score} Points.`;
+            } else {
+                endTitle.textContent = "☠️ GAME OVER";
+                endTitle.className = "game-over-title";
+                endMessage.textContent = `${frameworkMessage} Better luck next time.`;
+            }
+        }
+    </script>
+</body>
+</html>
