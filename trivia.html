@@ -155,7 +155,7 @@
             <div class="options-container" id="options-box"></div>
 
             <div id="shop-container" class="shop-box hidden">
-                <p>✨ <strong>Perk Milestone!</strong> You have 10 or more points. Spend points to buy an advantage:</p>
+                <p><strong>Perk Milestone!</strong> You have 10 or more points. Spend points to buy an advantage:</p>
                 <button class="btn" id="buy-hint-btn" style="background-color: #9b59b6;">Buy Hint (-2 Points)</button>
                 <button class="btn" id="bonus-q-btn" style="background-color: #34495e;">Unlock Harder Bonus Category</button>
             </div>
@@ -229,10 +229,22 @@
 
         const bonusQuestions = [
             {
-                question: "🔥 BONUS HARD QUESTION: What is the math formula for calculating the total possible arrangements of a standard deck of 52 cards?",
-                options: ["52 x 52", "52²", "52! (52 Factorial)", "52^10"],
+                question: "BONUS HARD QUESTION: What is the math formula for calculating the total possible arrangements of a standard deck of 52 cards?",
+                options: ["52 x 52", "52^2", "52! (52 Factorial)", "52^10"],
                 answer: 2,
                 explanation: "52! (52 factorial) generates an impossibly large number. Every time you shuffle a deck thoroughly, chances are that specific sequence of cards has never existed before in human history."
+            },
+            {
+                question: "BONUS HARD QUESTION: Which of these cool animals is known as the smallest bird in the world?",
+                options: ["Nicobar Pigeon", "Bee Hummingbird", "Attwater's Prairie Chicken", "Picasso Moth"],
+                answer: 1,
+                explanation: "The Bee Hummingbird is the smallest living bird, measuring only about 2 inches in length and weighing less than a dime!"
+            },
+            {
+                question: "BONUS HARD QUESTION: True or False? Very few animals or insects actually possess true blue pigment.",
+                options: ["True", "False"],
+                answer: 0,
+                explanation: "True! Most blue colors you see in nature (like blue jay feathers or butterfly wings) are caused by the structure of the feathers or scales reflecting light, not actual chemical pigment."
             }
         ];
 
@@ -341,7 +353,7 @@
             }
 
             if (currentQuestionIndex >= questions.length) {
-                endGame(true, "You successfully answered all the standard questions!");
+                endGame(true, "You successfully answered all available questions!");
                 return;
             }
 
@@ -374,11 +386,11 @@
 
             if (isCorrect) {
                 score += 5;
-                resultStatus.textContent = "🎉 Correct! (+5 pts)";
+                resultStatus.textContent = "Correct! (+5 pts)";
                 resultStatus.style.color = "#2ecc71";
             } else {
                 score -= 3;
-                resultStatus.textContent = selectedIndex === -1 ? "⏱️ Out of Time! (-3 pts)" : "❌ Incorrect! (-3 pts)";
+                resultStatus.textContent = selectedIndex === -1 ? "Out of Time! (-3 pts)" : "Incorrect! (-3 pts)";
                 resultStatus.style.color = "#e74c3c";
             }
 
@@ -421,29 +433,19 @@
 
         function triggerBonusQuestion() {
             if (score >= 10 && !hasAnsweredCurrent) {
-                // Injects a hard bonus question seamlessly next in queue
-                questions.splice(currentQuestionIndex + 1, 0, bonusQuestions[0]);
-                alert("An increased difficulty Bonus Question has been inserted next into your category tracker!");
-                bonusQBtn.disabled = true;
+                if (bonusQuestions.length > 0) {
+                    // Take the first bonus question out of the pool
+                    let nextBonus = bonusQuestions.shift();
+                    
+                    // Insert it right after the current question
+                    questions.splice(currentQuestionIndex + 1, 0, nextBonus);
+                    
+                    alert("A new Bonus Question has been added next in line!");
+                    
+                    // If we ran out of bonus questions, disable the button entirely
+                    if (bonusQuestions.length === 0) {
+                        bonusQBtn.disabled = true;
+                        bonusQBtn.textContent = "No More Bonus Questions";
+                    }
+                }
             }
-        }
-
-        function endGame(isWin, frameworkMessage) {
-            clearInterval(questionTimerInterval);
-            clearInterval(overallTimerInterval);
-            gameScreen.classList.add('hidden');
-            endScreen.classList.remove('hidden');
-
-            if (isWin) {
-                endTitle.textContent = "👑 CROWNED WINNER!";
-                endTitle.className = "victory-title";
-                endMessage.textContent = `${frameworkMessage} Finished with a grand total of: ${score} Points.`;
-            } else {
-                endTitle.textContent = "☠️ GAME OVER";
-                endTitle.className = "game-over-title";
-                endMessage.textContent = `${frameworkMessage} Better luck next time.`;
-            }
-        }
-    </script>
-</body>
-</html>
