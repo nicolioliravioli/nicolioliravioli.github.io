@@ -160,7 +160,7 @@
             <div class="options-container" id="options-box"></div>
 
             <div id="shop-container" class="shop-box hidden">
-                <p><strong>Perk Milestone!</strong> You have 10 or more points. Spend points to buy an advantage:</p>
+                <p><strong>Spend points to buy an advantage:</strong></p>
                 <button class="btn" id="buy-hint-btn" style="background-color: #9b59b6;">Buy Hint (-2 Points)</button>
                 <button class="btn" id="bonus-q-btn" style="background-color: #34495e;">Unlock Harder Bonus Category</button>
             </div>
@@ -180,7 +180,7 @@
     </div>
 
     <script>
-        // Trivia Question Dataset
+        /* Trivia Question Dataset */
         const baseQuestions = [
             {
                 question: "What war did the second Defenestration of Prague cause?",
@@ -229,6 +229,36 @@
                 options: ["Yes", "No"],
                 answer: 1,
                 explanation: "No, horseshoe crabs are actually more closely related to spiders and scorpions than they are to crabs."
+            },
+            {
+                question: "What did ancient Romans use as a primary ingredient in mouthwash and teeth whitener?",
+                options: ["charcoal", "urine", "toothpaste", "bleach"],
+                answer: 1,
+                explanation: "Urine contains ammonia which can act like bleach."
+            },
+            {
+                question: "What is the only letter in the English alphabet that does not appear anywhere on the periodic table of elements?",
+                options: ["Q", "J", "X", "Z"],
+                answer: 1,
+                explanation: "The letter 'J' is completely absent. Even newly discovered synthetic elements at the bottom use temporary or permanent names containing Q, X, or Z, but never J."
+            },
+            {
+                question: "What color was Coca-Cola's famous mascot, Santa Claus, heavily responsible for making popular worldwide?",
+                options: ["Green", "Blue", "Red", "White"],
+                answer: 2,
+                explanation: "While Santa had been drawn in red before, Coca-Cola's massive holiday ad campaigns starting in the 1931 cemented the jolly, bright-red suited Santa image into global culture forever."
+            },
+            {
+                question: "True or False: Goldfish have a terrible memory that only lasts for three seconds.",
+                options: ["True", "False"],
+                answer: 1,
+                explanation: "False! Scientists have proven that goldfish can actually remember things for up to five months, and they can even be trained to navigate mazes or recognize their owners."
+            },
+            {
+                question: "Which animal is has three hearts and blue blood?",
+                options: ["An Octopus", "A Shark", "A Blue Whale", "A Dolphin"],
+                answer: 0,
+                explanation: "An octopus has three hearts to pump blood effectively through its body, and its blood is blue because it uses a copper-rich protein (hemocyanin) to transport oxygen in cold oceans."
             }
         ];
 
@@ -250,6 +280,24 @@
                 options: ["True", "False"],
                 answer: 0,
                 explanation: "True! Most blue colors you see in nature (like blue jay feathers or butterfly wings) are caused by the structure of the feathers or scales reflecting light, not actual chemical pigment."
+            },
+            {
+                question: "Which famous conqueror was once attacked by a massive army of wild rabbits?",
+                options: ["Julius Caesar", "Napoleon Bonaparte", "Alexander the Great", "Genghis Khan"],
+                nswer: 1,
+                explanation: "In 1807, Napoleon requested a rabbit hunt for his men. Hundreds of domesticated rabbits were collected, but when released, instead of running away, they mistook Napoleon for their caretaker and swarmed him by the thousands!"
+            },
+            {
+                question: "Before it was changed to the pink 'Barbie' color we know today, what was Barbie's original signature outfit color scheme?",
+                options: ["Solid Red", "Black and White Stripes", "Polka Dot Blue", "Neon Yellow"],
+                answer: 1,
+                explanation: "When Barbie debuted in 1959, she wore a black-and-white striped swimsuit. The signature neon pink branding didn't completely take over until the late 1970s!"
+            },
+            {
+                question: "How long does it take for light leaving the surface of the Sun to travel through space and hit the Earth?",
+                options: ["About 8 seconds", "About 8 minutes", "Exactly 1 hour", "Instantly"],
+                answer: 1,
+                explanation: "Light travels incredibly fast, but because space is so vast, it takes about 8 minutes and 20 seconds for the sun's rays to reach our eyes!"
             }
         ];
 
