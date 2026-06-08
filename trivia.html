@@ -430,9 +430,11 @@
             shopContainer.classList.add('hidden'); //hides the perks 
 
             let currentQ = questions[currentQuestionIndex];
-            let isCorrect = (selectedIndex === currentQ.answer);
+            let isCorrect = (selectedIndex === currentQ.answer); //checks if the answer the user selected is the right answer
 
             Array.from(optionsBox.children).forEach((btn) => btn.disabled = true);
+            //array.from() convets html into java script
+
 
             if (isCorrect) {
                 score += 5;
@@ -448,8 +450,7 @@
             explanationText.textContent = currentQ.explanation;
             explanationBox.classList.remove('hidden');
 
-            // Instantly check Game Over states condition
-            if (score <= 0 && currentQuestionIndex >= 0) {
+            if (score <= 0 && currentQuestionIndex >= 0) { //second condition prevents game over from accidentally happening when the game loads
                 endGame(false, "Your points fell to 0 or below!");
             }
         }
@@ -460,13 +461,13 @@
         }
 
         function buyHint() {
+            //can buy a hint if score is greater than 10, hint hasn't been used for this question, and hasn't answered the question yet
             if (score >= 10 && !hintUsed && !hasAnsweredCurrent) {
                 score -= 2;
                 scoreDisplay.textContent = score;
                 hintUsed = true;
                 buyHintBtn.disabled = true;
 
-                // Eliminate one wrong option visually
                 let currentQ = questions[currentQuestionIndex];
                 let optionsButtons = Array.from(optionsBox.children);
                 
@@ -475,24 +476,22 @@
                         optionsButtons[i].style.textDecoration = "line-through";
                         optionsButtons[i].style.opacity = "0.5";
                         optionsButtons[i].disabled = true;
-                        break; // Remove just one option
-                    }
+                        break; 
+                    } //checks to see if the first answer is wrong, and crosses it off if it is, if it's the right one it will cross off the second answer which is (automatically) wrong
                 }
             }
         }
 
         function triggerBonusQuestion() {
             if (score >= 10 && !hasAnsweredCurrent) {
-                if (bonusQuestions.length > 0) {
-                    // Take the first bonus question out of the pool
-                    let nextBonus = bonusQuestions.shift();
+                if (bonusQuestions.length > 0) { //if there are still bonus questions left to ask
+        
+                    let nextBonus = bonusQuestions.shift(); 
                     
-                    // Insert it right after the current question
-                    questions.splice(currentQuestionIndex + 1, 0, nextBonus);
+                    questions.splice(currentQuestionIndex + 1, 0, nextBonus); //array modification, goes into main questions deck and adds the bonus question after the current question
                     
                     alert("A new Bonus Question has been added next in line!");
                     
-                    // If we ran out of bonus questions, disable the button entirely
                     if (bonusQuestions.length === 0) {
                         bonusQBtn.disabled = true;
                         bonusQBtn.textContent = "No More Bonus Questions";
