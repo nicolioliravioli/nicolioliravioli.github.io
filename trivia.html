@@ -425,7 +425,7 @@
                 let optionsButtons = Array.from(optionsBox.children);
                 
                 for (let i = 0; i < optionsButtons.length; i++) {
-                    if (i !== currentQ.answer) {
+                    if (optionsButtons[i] && i !== currentQ.answer) {
                         optionsButtons[i].style.textDecoration = "line-through";
                         optionsButtons[i].style.opacity = "0.5";
                         optionsButtons[i].disabled = true;
