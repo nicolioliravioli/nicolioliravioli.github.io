@@ -51,7 +51,7 @@
 
         .btn {
             background-color: #dd9f69;
-            color: rgb(154, 149, 149);
+            color: rgb(90, 88, 88);
             border: none;
             padding: 12px 24px;
             font-size: 16px;
@@ -145,7 +145,7 @@
         <h1>Cool Trivia</h1>
 
         <div id="start-screen">
-            <p>Welcome! Test your "little grey cells" as Hercule Poirot would say, may he rest in peace. Lose all of your points, and you lose. Survive 5 minutes or finish the deck to win!</p>
+            <p>Welcome! Test your "little grey cells" as Hercule Poirot would say, may he rest in peace. Lose all of your points, and you lose. Survive 5 minutes or finish the deck to win! You will have 15 seconds to answer each question.</p>
             <button class="btn" id="start-btn">Press Here to Start</button>
         </div>
 
@@ -180,7 +180,6 @@
     </div>
 
     <script>
-        /* Trivia Question Dataset */
         const baseQuestions = [
             {
                 question: "What war did the second Defenestration of Prague cause?",
@@ -301,18 +300,16 @@
             }
         ];
 
-        // State Variables
         let questions = [];
         let currentQuestionIndex = 0;
         let score = 0;
         let questionTimeLeft = 15;
-        let overallTimeLeft = 300; // 5 minutes in seconds
+        let overallTimeLeft = 300;
         let questionTimerInterval;
         let overallTimerInterval;
         let hasAnsweredCurrent = false;
         let hintUsed = false;
 
-        // DOM Elements
         const startScreen = document.getElementById('start-screen');
         const gameScreen = document.getElementById('game-screen');
         const endScreen = document.getElementById('end-screen');
