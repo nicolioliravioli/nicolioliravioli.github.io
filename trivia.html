@@ -333,16 +333,13 @@
         const endTitle = document.getElementById('end-title');
         const endMessage = document.getElementById('end-message');
 
-        // Event Listeners
         startBtn.addEventListener('click', startGame);
         nextBtn.addEventListener('click', nextQuestion);
         restartBtn.addEventListener('click', startGame);
         buyHintBtn.addEventListener('click', buyHint);
         bonusQBtn.addEventListener('click', triggerBonusQuestion);
 
-        // Core Functions
         function startGame() {
-            // Reset configurations
             questions = [...baseQuestions];
             currentQuestionIndex = 0;
             score = 0;
@@ -363,14 +360,14 @@
         }
 
         function startOverallTimer() {
-            clearInterval(overallTimerInterval);
+            clearInterval(overallTimerInterval); //makes timer reset in case the user reloaded the game
             overallTimerInterval = setInterval(() => {
-                overallTimeLeft--;
+                overallTimeLeft--; //subtracts seconds (making the timer tick down basically)
                 
-                // Formatting time display
-                let minutes = Math.floor(overallTimeLeft / 60);
-                let seconds = overallTimeLeft % 60;
+                let minutes = Math.floor(overallTimeLeft / 60); // overall seconds left divivded by amount of seconds in a minute to create the basic clock, math.floor() rounds down to nearest whole number for seconds
+                let seconds = overallTimeLeft % 60; //% divides the numbers but only keeps the remainder
                 oTimerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                //makes sure the clock puts the single digits in the right place when there is no tens place for seconds
 
                 if (overallTimeLeft <= 0) {
                     endGame(true, "Time Up! You survived the full 5 minutes!");
@@ -388,8 +385,8 @@
                 qTimerDisplay.textContent = questionTimeLeft;
 
                 if (questionTimeLeft <= 0) {
-                    clearInterval(questionTimerInterval);
-                    handleAnswer(-1); // Timeout penalty
+                    clearInterval(questionTimerInterval); //stops individual question timer countdown
+                    handleAnswer(-1); // user didn't click anything so as if pressed -1 (which doesn't exist which makes the code remove points)
                 }
             }, 1000);
         }
@@ -399,7 +396,6 @@
             hintUsed = false;
             explanationBox.classList.add('hidden');
             
-            // Show Shop / Perk option if score is exactly or above 10
             if (score >= 10) {
                 shopContainer.classList.remove('hidden');
                 buyHintBtn.disabled = false;
@@ -408,35 +404,34 @@
             }
 
             if (currentQuestionIndex >= questions.length) {
-                endGame(true, "You successfully answered all available questions!");
+                endGame(true, "You successfully answered all of the currently available questions!");
                 return;
             }
 
-            let currentQ = questions[currentQuestionIndex];
-            questionText.textContent = currentQ.question;
-            optionsBox.innerHTML = '';
+            let currentQ = questions[currentQuestionIndex]; // pretty sure it takes a question and answers and all info 
+            questionText.textContent = currentQ.question; //changes question
+            optionsBox.innerHTML = ''; //clear all previous button options from previous questions
 
             currentQ.options.forEach((option, index) => {
-                let button = document.createElement('button');
+                let button = document.createElement('button'); 
                 button.className = 'option-btn';
                 button.textContent = option;
                 button.addEventListener('click', () => handleAnswer(index));
                 optionsBox.appendChild(button);
-            });
+            }); //basically code to create buttons for answer options
 
             startQuestionTimer();
         }
 
         function handleAnswer(selectedIndex) {
-            if (hasAnsweredCurrent) return;
-            hasAnsweredCurrent = true;
-            clearInterval(questionTimerInterval);
-            shopContainer.classList.add('hidden'); // Lock perks after answering
+            if (hasAnsweredCurrent) return; //prevents user from clicking multiple buttons to try to basically cheat
+            hasAnsweredCurrent = true; 
+            clearInterval(questionTimerInterval); //freezes the question specific timer
+            shopContainer.classList.add('hidden'); //hides the perks 
 
             let currentQ = questions[currentQuestionIndex];
             let isCorrect = (selectedIndex === currentQ.answer);
 
-            // Turn off functionality of option buttons
             Array.from(optionsBox.children).forEach((btn) => btn.disabled = true);
 
             if (isCorrect) {
