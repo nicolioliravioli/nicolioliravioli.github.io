@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crazy Cool Fun Facts Trivia</title>
     <style>
-        /* CSS Styling for a Clean, Fun Theme */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #2c3e50, #4ca1af);
@@ -137,11 +136,11 @@
 <body>
 
     <div class="game-container">
-        <h1>Crazy Cool Fun Facts Trivia</h1>
+        <h1>Cool Trivia</h1>
 
         <div id="start-screen">
-            <p>Welcome! Test your knowledge on weird and wonderful facts. Lose all your points, and it's game over. Survive 5 minutes or finish the deck to win!</p>
-            <button class="btn" id="start-btn">Press Start to Begin</button>
+            <p>Welcome! Test your "little grey cells" as Hercule Poirot would say, may he rest in peace. Lose all of your points, and you lose. Survive 5 minutes or finish the deck to win!</p>
+            <button class="btn" id="start-btn">Press Here to Start</button>
         </div>
 
         <div id="game-screen" class="hidden">
@@ -305,6 +304,11 @@
 
             startOverallTimer();
             loadQuestion();
+
+            bonusQBtn.disabled = false;
+            bonusQBtn.textContent = "Unlock Harder Bonus Category";
+
+            startScreen.classList.add('hidden');
         }
 
         function startOverallTimer() {
@@ -450,5 +454,21 @@
                 }
             }
         }
+        function endGame(isVictory, message) {
+            clearInterval(questionTimerInterval);
+            clearInterval(overallTimerInterval);
+            
+            gameScreen.classList.add('hidden');
+            endScreen.classList.remove('hidden');
+            
+            endMessage.textContent = `${message} Final Score: ${score} points.`;
+            
+            if (isVictory) {
+                endTitle.textContent = "VICTORY!";
+                endTitle.className = "victory-title";
+            } else {
+                endTitle.textContent = "GAME OVER";
+                endTitle.className = "game-over-title";
+            }
+        }
 
-        
